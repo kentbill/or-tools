@@ -434,7 +434,12 @@ namespace operations_research {
 %rename (revAnd) UnsortedNullableRevBitset::RevAnd;
 %rename (revSubtract) UnsortedNullableRevBitset::RevSubtract;
 
-// Rename rules on Assignment.
+// Assignment
+// Ignored:
+%ignore Assignment::Load;
+%ignore Assignment::Save;
+// Methods:
+%unignore Assignment;
 %rename (activate) Assignment::Activate;
 %rename (activateObjective) Assignment::ActivateObjective;
 %rename (activated) Assignment::Activated;
@@ -460,7 +465,6 @@ namespace operations_research {
 %rename (hasObjective) Assignment::HasObjective;
 %rename (intVarContainer) Assignment::IntVarContainer;
 %rename (intervalVarContainer) Assignment::IntervalVarContainer;
-%rename (load) Assignment::Load;
 %rename (mutableIntVarContainer) Assignment::MutableIntVarContainer;
 %rename (mutableIntervalVarContainer) Assignment::MutableIntervalVarContainer;
 %rename (mutableSequenceVarContainer) Assignment::MutableSequenceVarContainer;
@@ -476,7 +480,6 @@ namespace operations_research {
 %rename (performedMin) Assignment::PerformedMin;
 %rename (performedValue) Assignment::PerformedValue;
 %rename (restore) Assignment::Restore;
-%rename (save) Assignment::Save;
 %rename (size) Assignment::Size;
 %rename (sequenceVarContainer) Assignment::SequenceVarContainer;
 %rename (setBackwardSequence) Assignment::SetBackwardSequence;
@@ -511,11 +514,13 @@ namespace operations_research {
 %rename (unperformed) Assignment::Unperformed;
 
 // AssignmentContainer
+// Ignored:
 %ignore AssignmentContainer::MutableElement;
 %ignore AssignmentContainer::MutableElementOrNull;
 %ignore AssignmentContainer::Element;
 %ignore AssignmentContainer::ElementPtrOrNull;
-// Rename rules on AssignmentContainer;
+%ignore AssignmentContainer::elements;
+// Methods:
 %rename (add) AssignmentContainer::Add;
 %rename (addAtPosition) AssignmentContainer::AddAtPosition;
 %rename (clear) AssignmentContainer::Clear;
@@ -525,7 +530,6 @@ namespace operations_research {
 %rename (copy) AssignmentContainer::Copy;
 %rename (copyIntersection) AssignmentContainer::CopyIntersection;
 %rename (contains) AssignmentContainer::Contains;
-// %unignore AssignmentContainer::elements;
 %rename (size) AssignmentContainer::Size;
 %rename (store) AssignmentContainer::Store;
 %rename (restore) AssignmentContainer::Restore;
@@ -539,7 +543,7 @@ namespace operations_research {
 // Ignored:
 %ignore IntVarElement::LoadFromProto;
 %ignore IntVarElement::WriteToProto;
-// Rename rules:
+// Methods:
 %unignore IntVarElement;
 %rename (reset) IntVarElement::Reset;
 %rename (clone) IntVarElement::Clone;
@@ -559,7 +563,7 @@ namespace operations_research {
 // Ignored:
 %ignore IntervalVarElement::LoadFromProto;
 %ignore IntervalVarElement::WriteToProto;
-// Rename rules:
+// Methods:
 %unignore IntervalVarElement;
 %rename (clone) IntervalVarElement::Clone;
 %rename (copy) IntervalVarElement::Copy;
@@ -600,7 +604,7 @@ namespace operations_research {
 // Ignored:
 %ignore SequenceVarElement::LoadFromProto;
 %ignore SequenceVarElement::WriteToProto;
-// Rename rules:
+// Methods:
 %unignore SequenceVarElement;
 %rename (backwardSequence) SequenceVarElement::BackwardSequence;
 %rename (clone) SequenceVarElement::Clone;
@@ -769,10 +773,13 @@ import java.lang.Runnable;
 %ignore Solver::SearchLogParameters;
 %ignore Solver::MakeSearchLog(SearchLogParameters parameters);
 %ignore Solver::MakeIntVarArray;
+%ignore Solver::MakeIntervalVarArray;
 %ignore Solver::MakeBoolVarArray;
 %ignore Solver::MakeFixedDurationIntervalVarArray;
 %ignore Solver::SetBranchSelector;
 %ignore Solver::MakeApplyBranchSelector;
+%ignore Solver::MakeAtMost;
+%ignore Solver::demon_profiler;
 %ignore Solver::set_fail_intercept;
 // Rename rules on Solver.
 %rename (acceptedNeighbors) Solver::accepted_neighbors;
@@ -815,7 +822,6 @@ import java.lang.Runnable;
 %rename (makeAssignVariableValueOrFail) Solver::MakeAssignVariableValueOrFail;
 %rename (makeAssignVariablesValues) Solver::MakeAssignVariablesValues;
 %rename (makeAssignment) Solver::MakeAssignment;
-%rename (makeAtMost) Solver::MakeAtMost;
 %rename (makeAtSolutionCallback) Solver::MakeAtSolutionCallback;
 %rename (makeBestValueSolutionCollector) Solver::MakeBestValueSolutionCollector;
 %rename (makeBetweenCt) Solver::MakeBetweenCt;
@@ -873,7 +879,6 @@ import java.lang.Runnable;
 %rename (makeIntervalRelaxedMax) Solver::MakeIntervalRelaxedMax;
 %rename (makeIntervalRelaxedMin) Solver::MakeIntervalRelaxedMin;
 %rename (makeIntervalVar) Solver::MakeIntervalVar;
-%rename (makeIntervalVarArray) Solver::MakeIntervalVarArray;
 %rename (makeIntervalVarRelation) Solver::MakeIntervalVarRelation;
 %rename (makeIntervalVarRelationWithDelay) Solver::MakeIntervalVarRelationWithDelay;
 %rename (makeInversePermutationConstraint) Solver::MakeInversePermutationConstraint;
@@ -998,11 +1003,6 @@ import java.lang.Runnable;
 %rename (rand32) Solver::Rand32;
 %rename (rand64) Solver::Rand64;
 %rename (randomConcatenateOperators) Solver::RandomConcatenateOperators;
-%rename (rankFirst) SequenceVar::RankFirst;
-%rename (rankLast) SequenceVar::RankLast;
-%rename (rankNotFirst) SequenceVar::RankNotFirst;
-%rename (rankNotLast) SequenceVar::RankNotLast;
-%rename (rankSequence) SequenceVar::RankSequence;
 %rename (reSeed) Solver::ReSeed;
 %rename (registerDemon) Solver::RegisterDemon;
 %rename (registerIntExpr) Solver::RegisterIntExpr;
@@ -1121,9 +1121,17 @@ import java.lang.Runnable;
 %rename (print) OptimizeVar::Print;
 %rename (var) OptimizeVar::Var;
 
-// Rename rules on SequenceVar.
-%rename (computePossibleFirstsAndLasts) SequenceVar::ComputePossibleFirstsAndLasts;
-%rename (fillSequence) SequenceVar::FillSequence;
+// SequenceVar
+// Ignored:
+%ignore SequenceVar::ComputePossibleFirstsAndLasts;
+%ignore SequenceVar::FillSequence;
+// Methods:
+%unignore SequenceVar;
+%rename (rankFirst) SequenceVar::RankFirst;
+%rename (rankLast) SequenceVar::RankLast;
+%rename (rankNotFirst) SequenceVar::RankNotFirst;
+%rename (rankNotLast) SequenceVar::RankNotLast;
+%rename (rankSequence) SequenceVar::RankSequence;
 %rename (interval) SequenceVar::Interval;
 %rename (next) SequenceVar::Next;
 
@@ -1229,7 +1237,7 @@ import java.util.function.LongBinaryOperator;
 // see https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html
 import java.util.function.Supplier;
 %}
-// Rename rules on SearchLog.
+// Methods:
 %rename (maintain) SearchLog::Maintain;
 %rename (outputDecision) SearchLog::OutputDecision;
 

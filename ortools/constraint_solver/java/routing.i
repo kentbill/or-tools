@@ -49,6 +49,7 @@ DEFINE_INDEX_TYPE_TYPEDEF(
     operations_research::RoutingModel::VehicleClassIndex);
 
 namespace operations_research {
+
 // RoutingModel
 // Map transit callback to Java @FunctionalInterface types.
 // This replaces the RoutingTransitCallback[1-2] in the Java proxy class
@@ -67,12 +68,27 @@ import java.util.function.LongUnaryOperator;
     int64 capacity,
     bool fix_start_cumul_to_zero,
     const std::string& name);
+%ignore RoutingModel::GetAllDimensionNames;
+%ignore RoutingModel::GetDeliveryIndexPairs;
+%ignore RoutingModel::GetDimensions;
+%ignore RoutingModel::GetDimensionsWithSoftAndSpanCosts;
+%ignore RoutingModel::GetDimensionsWithSoftOrSpanCosts;
+%ignore RoutingModel::GetPerfectBinaryDisjunctions;
+%ignore RoutingModel::GetPickupIndexPairs;
+%ignore RoutingModel::GetTypeIncompatibilities;
 %ignore RoutingModel::MakeStateDependentTransit;
 %ignore RoutingModel::RegisterStateDependentTransitCallback;
-%ignore RoutingModel::TransitCallback;
 %ignore RoutingModel::StateDependentTransitCallback;
+%ignore RoutingModel::SolveWithParameters(
+    const RoutingSearchParameters& search_parameters,
+    std::vector<const Assignment*>* solutions);
+%ignore RoutingModel::SolveFromAssignmentWithParameters(
+      const Assignment* assignment,
+      const RoutingSearchParameters& search_parameters,
+      std::vector<const Assignment*>* solutions);
+%ignore RoutingModel::TransitCallback;
 %ignore RoutingModel::UnaryTransitCallbackOrNull;
-// API:
+// Methods:
 %unignore RoutingModel;
 %rename (activeVar) RoutingModel::ActiveVar;
 %rename (addAllActive) RoutingModel::AddAllActive;
@@ -110,7 +126,6 @@ import java.util.function.LongUnaryOperator;
 %rename (costsAreHomogeneousAcrossVehicles) RoutingModel::CostsAreHomogeneousAcrossVehicles;
 %rename (debugOutputAssignment) RoutingModel::DebugOutputAssignment;
 %rename (end) RoutingModel::End;
-%rename (getAllDimensionNames) RoutingModel::GetAllDimensionNames;
 %rename (getAmortizedLinearCostFactorOfVehicles) RoutingModel::GetAmortizedLinearCostFactorOfVehicles;
 %rename (getAmortizedQuadraticCostFactorOfVehicles) RoutingModel::GetAmortizedQuadraticCostFactorOfVehicles;
 %rename (getArcCostForClass) RoutingModel::GetArcCostForClass;
@@ -118,12 +133,8 @@ import java.util.function.LongUnaryOperator;
 %rename (getArcCostForVehicle) RoutingModel::GetArcCostForVehicle;
 %rename (getCostClassIndexOfVehicle) RoutingModel::GetCostClassIndexOfVehicle;
 %rename (getCostClassesCount) RoutingModel::GetCostClassesCount;
-%rename (getDeliveryIndexPairs) RoutingModel::GetDeliveryIndexPairs;
 %rename (getDepot) RoutingModel::GetDepot;
 %rename (getDimensionOrDie) RoutingModel::GetDimensionOrDie;
-%rename (getDimensions) RoutingModel::GetDimensions;
-%rename (getDimensionsWithSoftAndSpanCosts) RoutingModel::GetDimensionsWithSoftAndSpanCosts;
-%rename (getDimensionsWithSoftOrSpanCosts) RoutingModel::GetDimensionsWithSoftOrSpanCosts;
 %rename (getDisjunctionIndices) RoutingModel::GetDisjunctionIndices;
 %rename (getDisjunctionMaxCardinality) RoutingModel::GetDisjunctionMaxCardinality;
 %rename (getDisjunctionPenalty) RoutingModel::GetDisjunctionPenalty;
@@ -136,12 +147,9 @@ import java.util.function.LongUnaryOperator;
 %rename (getNumberOfDisjunctions) RoutingModel::GetNumberOfDisjunctions;
 %rename (getNumberOfRejectsInFirstSolution) RoutingModel::GetNumberOfRejectsInFirstSolution;
 %rename (getNumberOfVisitTypes) RoutingModel::GetNumberOfVisitTypes;
-%rename (getPerfectBinaryDisjunctions) RoutingModel::GetPerfectBinaryDisjunctions;
 %rename (getPickupAndDeliveryPolicyOfVehicle) RoutingModel::GetPickupAndDeliveryPolicyOfVehicle;
-%rename (getPickupIndexPairs) RoutingModel::GetPickupIndexPairs;
 %rename (getPrimaryConstrainedDimension) RoutingModel::GetPrimaryConstrainedDimension;
 %rename (getSameVehicleIndicesOfIndex) RoutingModel::GetSameVehicleIndicesOfIndex;
-%rename (getTypeIncompatibilities) RoutingModel::GetTypeIncompatibilities;
 %rename (getVehicleClassIndexOfVehicle) RoutingModel::GetVehicleClassIndexOfVehicle;
 %rename (getVehicleClassesCount) RoutingModel::GetVehicleClassesCount;
 %rename (getVisitType) RoutingModel::GetVisitType;
