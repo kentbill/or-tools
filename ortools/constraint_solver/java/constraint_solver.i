@@ -1288,10 +1288,18 @@ import java.util.function.Supplier;
 %rename (startProcessingIntegerVariable) PropagationMonitor::StartProcessingIntegerVariable;
 
 // Rename rules on IntVarLocalSearchHandler.
-%rename (addToAssignment) IntVarLocalSearchHandler::AddToAssignment;
-%rename (onAddVars) IntVarLocalSearchHandler::OnAddVars;
-%rename (onRevertChanges) IntVarLocalSearchHandler::OnRevertChanges;
-%rename (valueFromAssignent) IntVarLocalSearchHandler::ValueFromAssignent;
+%ignore IntVarLocalSearchHandler;
+//%rename (addToAssignment) IntVarLocalSearchHandler::AddToAssignment;
+//%rename (onAddVars) IntVarLocalSearchHandler::OnAddVars;
+//%rename (onRevertChanges) IntVarLocalSearchHandler::OnRevertChanges;
+//%rename (valueFromAssignent) IntVarLocalSearchHandler::ValueFromAssignent;
+
+// Rename rules on SequenceVarLocalSearchHandler.
+%ignore SequenceVarLocalSearchHandler;
+//%rename (addToAssignment) SequenceVarLocalSearchHandler::AddToAssignment;
+//%rename (onAddVars) SequenceVarLocalSearchHandler::OnAddVars;
+//%rename (onRevertChanges) SequenceVarLocalSearchHandler::OnRevertChanges;
+//%rename (valueFromAssignent) SequenceVarLocalSearchHandler::ValueFromAssignent;
 
 // LocalSearchOperator
 %feature("director") LocalSearchOperator;
@@ -1362,12 +1370,6 @@ import java.util.function.Supplier;
 %ignore SequenceVarLocalSearchOperator::SetBackwardSequence;
 %ignore SequenceVarLocalSearchOperator::SetForwardSequence;
 %rename (start) SequenceVarLocalSearchOperator::Start;
-
-// Rename rules on SequenceVarLocalSearchHandler.
-%rename (addToAssignment) SequenceVarLocalSearchHandler::AddToAssignment;
-%rename (onAddVars) SequenceVarLocalSearchHandler::OnAddVars;
-%rename (onRevertChanges) SequenceVarLocalSearchHandler::OnRevertChanges;
-%rename (valueFromAssignent) SequenceVarLocalSearchHandler::ValueFromAssignent;
 
 
 // PathOperator
