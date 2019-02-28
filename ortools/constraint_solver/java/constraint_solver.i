@@ -1535,10 +1535,12 @@ PROTO2_RETURN(operations_research::SearchLimitParameters,
 namespace operations_research {
 // IMPORTANT(corentinl): These functions from constraint_solveri.h are global, so in
 // java they are in the main.java (import com.[...].constraintsolver.main).
+// Ignored:
+%ignore FillValues;
+// Functions:
 %rename (areAllBooleans) AreAllBooleans;
 %rename (areAllBound) AreAllBound;
 %rename (areAllBoundTo) AreAllBoundTo;
-%rename (fillValues) FillValues;
 %rename (maxVarArray) MaxVarArray;
 %rename (minVarArray) MinVarArray;
 %rename (posIntDivDown) PosIntDivDown;
