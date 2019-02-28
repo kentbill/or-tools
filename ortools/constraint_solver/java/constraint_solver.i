@@ -334,6 +334,10 @@ DEFINE_ARGS_TO_R_CALLBACK(
   VAR_ARGS((jlong)t))
 
 #undef VAR_ARGS
+#undef DEFINE_SOLVER_TO_VOID_CALLBACK
+#undef DEFINE_ARGS_TO_R_CALLBACK
+#undef DEFINE_VOID_TO_R_CALLBACK
+#undef DEFINE_VOID_TO_STRING_CALLBACK
 
 // Renaming
 namespace operations_research {
