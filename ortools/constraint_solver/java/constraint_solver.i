@@ -686,7 +686,7 @@ import java.util.function.LongConsumer;
 import java.lang.Runnable;
 %}
 // note: SWIG does not support multiple %typemap(javacode) Type, so we have to
-// define all Solver tweak here (ed and not in the macro DEFINE_CALLBACK_*)
+// define all Solver tweak here.
 %typemap(javacode) Solver %{
   /**
    * This exceptions signal that a failure has been raised in the C++ world.
@@ -768,8 +768,7 @@ import java.lang.Runnable;
     return array;
   }
 %}
-
-// Ignore rules on Solver.
+// Ignored:
 %ignore Solver::SearchLogParameters;
 %ignore Solver::MakeSearchLog(SearchLogParameters parameters);
 %ignore Solver::MakeIntVarArray;
@@ -781,7 +780,7 @@ import java.lang.Runnable;
 %ignore Solver::MakeAtMost;
 %ignore Solver::demon_profiler;
 %ignore Solver::set_fail_intercept;
-// Rename rules on Solver.
+// Methods:
 %rename (acceptedNeighbors) Solver::accepted_neighbors;
 %rename (activeSearch) Solver::ActiveSearch;
 %rename (addBacktrackAction) Solver::AddBacktrackAction;
@@ -1187,8 +1186,10 @@ import java.util.function.LongBinaryOperator;
 %rename (setUnassigned) Pack::SetUnassigned;
 %rename (unassignAllRemainingItems) Pack::UnassignAllRemainingItems;
 
-// Rename rules on PropagationBaseObject.
+// PropagationBaseObject
+// Ignored:
 %ignore PropagationBaseObject::set_action_on_fail;
+// Methods:
 %rename (baseName) PropagationBaseObject::BaseName;
 %rename (enqueueAll) PropagationBaseObject::EnqueueAll;
 %rename (enqueueDelayedDemon) PropagationBaseObject::EnqueueDelayedDemon;
