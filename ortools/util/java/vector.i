@@ -174,7 +174,7 @@ VECTOR_AS_JAVA_ARRAY(double, double, Double);
       inner_size,
       reinterpret_cast<const j##JavaType*>((*$1)[index1].data()));
     // Add innner_array to $input
-    JCALL3(Set##JavaTypeName##ArrayElement, jenv, $input, index1, inner_array);
+    JCALL3(SetObjectArrayElement, jenv, $input, index1, inner_array);
   }
 %}
 %enddef  // MATRIX_AS_JAVA_ARRAY
