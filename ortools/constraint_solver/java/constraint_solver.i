@@ -430,13 +430,9 @@ namespace operations_research {
 %rename (rankLast) RevPartialSequence::RankLast;
 %rename (size) RevPartialSequence::Size;
 
-// Rename rules on UnsortedNullableRevBitset.
-%rename (activeWordSize) UnsortedNullableRevBitset::ActiveWordSize;
-%rename (empty) UnsortedNullableRevBitset::Empty;
-%rename (init) UnsortedNullableRevBitset::Init;
-%rename (intersects) UnsortedNullableRevBitset::Intersects;
-%rename (revAnd) UnsortedNullableRevBitset::RevAnd;
-%rename (revSubtract) UnsortedNullableRevBitset::RevSubtract;
+// UnsortedNullableRevBitset
+// only use by table.cc should be removed from constraint_solveri.h
+%ignore UnsortedNullableRevBitset;
 
 // Assignment
 // Ignored:
