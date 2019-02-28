@@ -770,6 +770,9 @@ import java.lang.Runnable;
 %}
 // Ignored:
 %ignore Solver::SearchLogParameters;
+%ignore Solver::ActiveSearch;
+%ignore Solver::SetSearchContext;
+%ignore Solver::SearchContext;
 %ignore Solver::MakeSearchLog(SearchLogParameters parameters);
 %ignore Solver::MakeIntVarArray;
 %ignore Solver::MakeIntervalVarArray;
@@ -781,8 +784,8 @@ import java.lang.Runnable;
 %ignore Solver::demon_profiler;
 %ignore Solver::set_fail_intercept;
 // Methods:
+%unignore Solver::Solver;
 %rename (acceptedNeighbors) Solver::accepted_neighbors;
-%rename (activeSearch) Solver::ActiveSearch;
 %rename (addBacktrackAction) Solver::AddBacktrackAction;
 %rename (addCastConstraint) Solver::AddCastConstraint;
 %rename (addConstraint) Solver::AddConstraint;
@@ -1009,10 +1012,8 @@ import java.lang.Runnable;
 %rename (registerIntervalVar) Solver::RegisterIntervalVar;
 %rename (restartCurrentSearch) Solver::RestartCurrentSearch;
 %rename (restartSearch) Solver::RestartSearch;
-%rename (searchContext) Solver::SearchContext;
 %rename (searchDepth) Solver::SearchDepth;
 %rename (searchLeftDepth) Solver::SearchLeftDepth;
-%rename (setSearchContext) Solver::SetSearchContext;
 %rename (shouldFail) Solver::ShouldFail;
 %rename (solve) Solver::Solve;
 %rename (solveAndCommit) Solver::SolveAndCommit;
@@ -1189,12 +1190,12 @@ import java.util.function.LongBinaryOperator;
 // PropagationBaseObject
 // Ignored:
 %ignore PropagationBaseObject::set_action_on_fail;
+%ignore PropagationBaseObject::ExecuteAll;
+%ignore PropagationBaseObject::EnqueueAll;
 // Methods:
 %rename (baseName) PropagationBaseObject::BaseName;
-%rename (enqueueAll) PropagationBaseObject::EnqueueAll;
 %rename (enqueueDelayedDemon) PropagationBaseObject::EnqueueDelayedDemon;
 %rename (enqueueVar) PropagationBaseObject::EnqueueVar;
-%rename (executeAll) PropagationBaseObject::ExecuteAll;
 %rename (freezeQueue) PropagationBaseObject::FreezeQueue;
 %rename (hasName) PropagationBaseObject::HasName;
 %rename (setName) PropagationBaseObject::set_name;
